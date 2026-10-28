@@ -1,0 +1,10 @@
+import {spawn} from 'node:child_process';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {BASE,ROOT,output} from './config.mjs';
+const baseTests=(await fs.readdir(path.join(BASE,'tests'))).filter(n=>/\.test\.(js|mjs)$/.test(n)).map(n=>path.join(BASE,'tests',n));
+const localTests=(await fs.readdir(path.join(ROOT,'tests'))).filter(n=>/\.test\.mjs$/.test(n)).map(n=>path.join(ROOT,'tests',n));
+const child=spawn(process.execPath,['--test','--test-reporter=tap',...baseTests,...localTests],{cwd:ROOT,stdio:['ignore','pipe','pipe'],windowsHide:true});
+let stdout='',stderr='';child.stdout.on('data',d=>stdout+=d);child.stderr.on('data',d=>stderr+=d);
+const exit=await new Promise(resolve=>child.on('exit',resolve));await output('rules.tap',stdout+stderr);
+console.log(stdout.split('\n').filter(l=>/^# (tests|pass|fail|skipped|duration)/.test(l)).join('\n'));if(exit)console.log(stdout.slice(-5000));process.exitCode=exit||0;

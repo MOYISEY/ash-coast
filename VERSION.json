@@ -1,7 +1,25 @@
 {
-  "version": "0.1.1",
-  "saveFormatVersion": 1,
-  "bundle": "dist/assets/index-BAIfrxZz.js",
-  "bundleBytes": 522345,
-  "bundleSha256": "6685e9f08636c96abc88af7f5329f834f066891099980091d2349e37c60e9eba"
+  "version": "0.5.0",
+  "status": "release 0.5.0; approved GitHub Pages publication",
+  "saveFormatVersion": 3,
+  "bundle": "dist/assets/index-DWk76uHt.js",
+  "bundleBytes": 593940,
+  "bundleSha256": "2110b6b1b7c5d652c8daaef4f0a84ce0de292270129f49d16b49d262cc644969",
+  "assets": [
+    {
+      "file": "dist/index.html",
+      "bytes": 10257,
+      "sha256": "25259a5d54b5bfa80ae469aa0f70714fd239b919beeaf9215d3f66331bc57013"
+    },
+    {
+      "file": "dist/assets/index-ByVT5jeA.css",
+      "bytes": 13585,
+      "sha256": "ea7394c970fb95632a17acb6f60d6f49dd205d120bcaa058bd67f26439ab16b6"
+    },
+    {
+      "file": "dist/assets/index-DWk76uHt.js",
+      "bytes": 593940,
+      "sha256": "2110b6b1b7c5d652c8daaef4f0a84ce0de292270129f49d16b49d262cc644969"
+    }
+  ]
 }

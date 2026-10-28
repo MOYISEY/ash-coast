@@ -10,5 +10,5 @@ const page=new URL('https://moyisey.github.io/ash-coast/');
 for(const asset of assets){assert(new URL(asset,page).pathname.startsWith('/ash-coast/assets/'));await fs.access(path.join('dist',asset));}
 const bytes=await fs.readFile(expected.bundle);
 assert.equal(bytes.length,expected.bundleBytes);
-assert.equal(createHash('sha256').update(bytes).digest('hex'),expected.bundleSha256,'published gameplay bytes match verified 0.1.1');
+assert.equal(createHash('sha256').update(bytes).digest('hex'),expected.bundleSha256,'candidate gameplay bytes match the frozen version manifest');
 console.log(`Verified ${assets.length} project-path assets; gameplay SHA-256 ${expected.bundleSha256}`);

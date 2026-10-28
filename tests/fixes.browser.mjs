@@ -4,11 +4,11 @@ import {chromium} from 'playwright-core';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {initialState} from '../src/core.js';
-const url=process.env.GAME_URL||'http://127.0.0.1:5173/';
-const out=process.env.EVIDENCE_DIR||'evidence/0.1.1';
+const url=process.env.GAME_URL||'http://127.0.0.1:5189/';
+const out=process.env.EVIDENCE_DIR||'evidence/regressions';
 await fs.mkdir(out,{recursive:true});
 const browser=await chromium.launch({...(process.env.PLAYWRIGHT_EXECUTABLE_PATH?{executablePath:process.env.PLAYWRIGHT_EXECUTABLE_PATH}:{channel:'chrome'}),headless:true,chromiumSandbox:true,ignoreDefaultArgs:['--unsafely-disable-devtools-self-xss-warnings','--enable-unsafe-swiftshader']});
-const errors=[],report={version:'0.1.1',browser:browser.version(),checks:[],corners:[],errors,focusSwitch:'NOT VERIFIED: no real browser tab switch tested'};
+const errors=[],report={version:'0.4.2',browser:browser.version(),checks:[],corners:[],errors,focusSwitch:'NOT VERIFIED: no real browser tab switch tested'};
 const context=await browser.newContext({viewport:{width:1280,height:720}});
 await context.addInitScript(()=>{
  Object.defineProperty(Element.prototype,'requestPointerLock',{configurable:true,value(){window.__qaLockRequests=(window.__qaLockRequests||0)+1;return Promise.reject(new DOMException('Explicit regression scenario: pointer lock denied','NotAllowedError'));}});
